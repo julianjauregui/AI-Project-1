@@ -32,34 +32,63 @@ print("Interaction Summary: ")
 print(interactions.describe())
 
 
+#This helps us visualize the interactions dataset
+#the first category is the interest
+sns.histplot(data=interactions, x="Interest")
+plt.title("Distribution of Interest")
+plt.show()
+#the second category is the User Level
+sns.histplot(data=interactions, x="User level")
+plt.title("Distribution of User Level")
+plt.show()
+#the third category is the NPC Friendliness
+sns.histplot(data=interactions, x="NPC friendliness")
+plt.title("Distribution of NPC Friendliness")
+plt.show()
+#the fourth category is the Interaction length
+sns.histplot(data=interactions, x="Interaction length")
+plt.title("Distribution of Interaction length")
+plt.show()
+#the fifth category is the Interaction quests acquired
+sns.histplot(data=interactions, x="Interaction quests acquired")
+plt.title("Distribution of Interaction quests acquired")
+plt.show()
+plt.show()
+
+
 
 # First, visualize raw relationships (without scaling)
-
+#We will be making the target the interest
 # This style of plot uses multiple panels within the same figure
 plt.figure(figsize=(12, 8))
 plt.subplot(2, 2, 1)
-plt.scatter(interactions["User level"], interactions["Interaction length"], alpha=0.5, color="crimson")
+
+#this maps interest vs user level
+plt.scatter(interactions["User level"], interactions["Interest"], alpha=0.5, color="crimson")
 plt.xlabel("User level")
-plt.ylabel("Interaction length")
-plt.title("Interaction length vs User Level")
+plt.ylabel("Interest")
+plt.title("Interest vs User Level")
 
+#this maps interest vs NPC Friendliness
 plt.subplot(2, 2, 2)
-plt.scatter(interactions["NPC friendliness"], interactions["Interaction length"], alpha=0.5, color="darkorange")
+plt.scatter(interactions["NPC friendliness"], interactions["Interest"], alpha=0.5, color="darkorange")
 plt.xlabel("NPC friendliness")
-plt.ylabel("Interaction length")
-plt.title("Interaction length vs. NPC friendliness")
+plt.ylabel("Interest")
+plt.title("Interest vs. NPC friendliness")
 
+#this maps interest vs Interaction length
 plt.subplot(2, 2, 3)
-plt.scatter(interactions["Interest"], interactions["Interaction length"], alpha=0.5, color="royalblue")
-plt.xlabel("Interest")
-plt.ylabel("Interaction length")
-plt.title("Interaction length vs Interest")
+plt.scatter(interactions["Interaction length"], interactions["Interest"], alpha=0.5, color="royalblue")
+plt.xlabel("Interaction length")
+plt.ylabel("Interest")
+plt.title("Interest vs. Interaction length")
 
+#this maps interest vs interaction quests acquired
 plt.subplot(2, 2, 4)
-plt.scatter(interactions["Interaction quests acquired"], interactions["Interaction length"], alpha=0.5, color="lightgreen")
+plt.scatter(interactions["Interaction quests acquired"], interactions["Interest"], alpha=0.5, color="lightgreen")
 plt.xlabel("Interaction quests acquired")
-plt.ylabel("Interaction length")
-plt.title("Interaction length vs Interaction quests acquired")
+plt.ylabel("Interest")
+plt.title("Interest vs Interaction quests acquired")
 
 
 plt.tight_layout()
